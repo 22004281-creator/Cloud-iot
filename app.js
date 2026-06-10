@@ -6,7 +6,7 @@ const themeKey = 'iot_gdpr_theme';
 // Để rỗng thì:
 // - local => dùng /api
 // - azurestaticapps => vẫn dùng /api (sẽ lỗi nếu không có SWA Functions)
-const DEFAULT_CLOUD_API_BASE = '';
+const DEFAULT_CLOUD_API_BASE = 'https://gdprapi-dwdehpbzaedrbdcj.eastasia-01.azurewebsites.net';
 
 const loginSection = document.getElementById('loginSection');
 const dashboardSection = document.getElementById('dashboardSection');
