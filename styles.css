@@ -60,39 +60,62 @@
 }
 
 * , *::before, *::after { box-sizing: border-box; margin:0; padding:0 }
-body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif; }
-/* ... rest of original CSS kept ... */
 
-/* Overrides: show telemetry horizontally and make charts scrollable horizontally */
-.telemetry-visuals {
+/* Small gauges strip for telemetry visuals (added) */
+.telemetry-small-gauges {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.small-gauge {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px;
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 14px;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.telemetry-gauge-wrap {
-  min-width: 260px;
-  max-width: 320px;
-  flex: 0 0 280px;
+.small-gauge:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
 }
 
-.telemetry-trend-wrap {
-  flex: 1 1 0%;
-  min-width: 420px;
+.small-gauge canvas {
+  width: 100% !important;
+  height: 80px !important;
+  max-height: 90px;
 }
 
-/* Charts: make chart grid horizontal and scrollable so many sensors don't wrap awkwardly */
-.chart-grid {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
+.gauge-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
 }
 
-.chart-wrap {
-  min-width: 240px;
-  flex: 0 0 260px;
+/* Motion indicator style: show a rounded badge next to label when motion detected */
+.motion-badge {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+/* Responsive: stack on narrow screens */
+@media (max-width: 880px) {
+  .telemetry-small-gauges {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .telemetry-small-gauges {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
