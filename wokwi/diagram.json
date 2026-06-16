@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "author": "ChatGPT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -14.5, "left": -139.4, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -162.9,
+      "left": -101.4,
+      "attrs": { "humidity": "68.5", "temperature": "12.9" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -245.6,
+      "left": -45.78,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultra1",
+      "top": -171.3,
+      "left": 139.9,
+      "attrs": { "distance": "261" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 224,
+      "left": -325.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 64,
+      "left": 245.6,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "dht1:VCC", "esp:3V3", "red", [] ],
+    [ "dht1:GND", "esp:GND.1", "green", [] ],
+    [ "dht1:SDA", "esp:15", "green", [] ],
+    [ "pir1:VCC", "esp:3V3", "red", [] ],
+    [ "pir1:GND", "esp:GND.1", "red", [] ],
+    [ "pir1:OUT", "esp:27", "green", [] ],
+    [ "ultra1:VCC", "esp:5V", "red", [] ],
+    [ "ultra1:GND", "esp:GND.1", "orange", [] ],
+    [ "ultra1:TRIG", "esp:5", "green", [] ],
+    [ "ultra1:ECHO", "esp:18", "blue", [] ],
+    [ "ldr1:GND", "esp:GND.1", "blue", [] ],
+    [ "ldr1:AO", "esp:34", "yellow", [] ],
+    [ "lcd1:GND", "esp:GND.1", "violet", [] ],
+    [ "lcd1:VCC", "esp:5V", "red", [] ],
+    [ "lcd1:SDA", "esp:21", "green", [] ],
+    [ "lcd1:SCL", "esp:22", "green", [] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h-211.2", "v0.2" ] ],
+    [ "lcd1:SCL", "esp:D22", "green", [ "h-230.4", "v-57.3" ] ],
+    [ "esp:VIN", "lcd1:VCC", "red", [ "h-9.6", "v19.2", "h268.8", "v-28.8" ] ],
+    [ "ultra1:TRIG", "esp:D5", "green", [ "v240", "h-221.2", "v-38.4" ] ],
+    [ "esp:D18", "ultra1:ECHO", "green", [ "h172.5", "v-153.6", "h96" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v19.2", "h124.9", "v48" ] ]
+  ],
+  "dependencies": {}
+}
